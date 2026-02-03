@@ -1,0 +1,160 @@
+/*-- scss:defaults --*/
+
+@import url('https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+// Farben für bayrische Behörden-Ästhetik
+$text-color: #292C2D;
+$background-color: #FFFBF3;
+$salmon: #FF7550;
+$green: #CFFF63;
+$dimmer-green: #ECFEB9;
+$lilac: #B6A6F6;
+$purple: #4D57B9;
+$light-gray: #B1AEA8;
+$medium-gray: #707070;
+$link-color: $purple;
+
+$font-family-sans: 'Funnel Sans', sans-serif !default;
+
+
+$body-bg: $background-color !default;
+$body-color: $text-color !default;
+$link-color: $purple !default;
+$callout-color: $purple !default;
+
+$navbar-bg: $light-gray !default;
+$navbar-fg: $text-color !default;
+$navbar-hl: $purple !default;
+$footer-fg: $text-color !default;
+$footer-hl: $purple !default;
+
+// headings
+$presentation-heading-font: $font-family-sans !default;
+$presentation-heading-color: $text-color !default;
+$presentation-heading-font-size: "4em" !default;
+$presentation-heading-font-weight: "normal" !default;
+
+
+/*-- scss:rules --*/
+
+// Überschriften
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-family-sans;
+  color: $text-color;
+  font-weight: light;
+  text-transform: none;
+}
+
+h1 {
+  font-size: 2.5em;
+}
+
+h2 {
+  font-size: 1.8em;
+  margin-bottom: 0.5em;
+}
+
+body, p, span, li {
+  font-weight: normal;
+  font-size: 1em;
+  line-height: 1.2em;
+}
+
+// Callouts styling
+.callout {
+  border-color: $purple;
+  background-color: $purple;
+  border-radius: 5px;
+  padding: 1em;
+  margin: 1em 0;
+}
+
+.callout-important {
+  border-color: $salmon;
+  background-color: $salmon;
+}
+
+.callout-tip {
+  border-color: $green;
+  background-color: $green;
+}
+
+.callout-note {
+  border-color: $lilac;
+  background-color: $lilac;
+}
+
+// Tabellen
+table {
+  font-size: 0.8em;
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1em 0;
+}
+
+table th {
+  background-color: $medium-gray;
+  color: white;
+  padding: 0.5em;
+  font-weight: 600;
+}
+
+table td {
+  padding: 0.5em;
+  border-bottom: 1px solid #ddd;
+}
+
+table tr:hover {
+  background-color: #f5f5f5;
+}
+
+// Code-Blöcke
+pre {
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  border-radius: 5px;
+  margin: 1em 0;
+}
+
+code {
+  background-color: $background-color;
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  font-size: 0.9em;
+}
+
+// Incremental Listen
+ul, ol {
+  margin: 0.5em 0;
+}
+
+li {
+  margin: 0.3em 0;
+}
+
+// Spalten-Layout
+.columns {
+  display: flex;
+  gap: 3em;
+}
+
+.column {
+  flex: 1;
+}
+
+// Checkbox styling
+input[type="checkbox"]:checked {
+  accent-color: $green;
+}
+
+// Fragment-Animationen
+.fragment {
+  transition: all 0.3s ease;
+}
+
+// Hintergrund-Farben für Sections
+section[data-background-color] h1,
+section[data-background-color] h2 {
+  font-family: $font-family-sans;
+  color: $text-color;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}

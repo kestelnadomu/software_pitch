@@ -1,0 +1,319 @@
+---
+title: "Webapp für automatisierte Datenanalysen"
+subtitle: "Technische Stack-Optionen mit Fokus auf Datenschutz"
+author:
+  name: |
+    ![](img/ADA_G_PrimaryLogo_FullColor_Positive.svg){height=4em}
+
+
+title-slide-attributes: 
+  data-footer: false
+  data-logo: ""
+
+format:
+  revealjs:
+    toc: true
+    toc-title: Agenda
+    toc-depth: 1
+    number-sections: false
+    number-depth: 1
+    scrollable: true
+    center-title-slide: true
+    scroll-view: false
+    incremental: true
+    theme: [default, ada_style.scss]
+    slide-number: true
+    chalkboard: true
+    reference-location: document
+    footnotes-hover: true
+    preview-links: auto
+    logo: img/ADA.png
+    footer: "Datenschutzkonforme Webapp-Entwicklung"
+    transition: slide
+    background-transition: fade
+---
+
+# Stack-Optionen {background-color="#FF7550"}
+
+## Übersicht der Ansätze
+
+| Kriterium | Option 1: HTML/JS | Option 2: Quarto/webR |
+|-----------|-------------------|------------------------|
+| Komplexität | Minimal | Mittel |
+| Flexibilität | Sehr hoch | Hoch |
+| R-Integration | ❌ | ✅ |
+| Vorlagen | Manuell | Viele verfügbar |
+| Datenverarbeitung | Client-Side | Client-Side |
+
+<!-- # Option 1 {background-color="#2C5F8D"} -->
+
+## Option 1: Reines HTML und JavaScript
+
+<!-- ::: {.columns}
+::: {.column width="50%"}
+**Vorteile**
+
+- ⚡ Minimalgewicht
+- 🔧 Maximale Flexibilität
+- 🎯 Volle Kontrolle über UI/UX
+- 📦 Einfaches Deployment
+- 🔄 Wie aktueller Prototyp
+:::
+
+::: {.column width="50%"}
+**Nachteile**
+
+- 🔨 Alles selbst bauen
+- 📊 Keine R-Funktionalität
+- 📝 Report-Templates manuell
+- ⏱️ Höherer Entwicklungsaufwand
+:::
+:::
+
+## Technische Details - Option 1 -->
+
+```javascript
+// Beispiel: Client-Side Datenverarbeitung
+class DataProcessor {
+  constructor() {
+    this.data = null;
+  }
+  
+  async processFile(file) {
+    // Alle Daten bleiben im Browser
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      this.data = this.analyze(e.target.result);
+      this.generateReport();
+    };
+    reader.readAsText(file);
+  }
+}
+```
+
+::: {.callout-important}
+## Datenschutz-Vorteil
+Keine Server-Übertragung - alle Daten bleiben lokal!
+:::
+
+<!-- # Option 2 {background-color="#5D3A9B"} -->
+
+## Option 2: HTML/JS mit Quarto & webR
+
+<!-- ::: {.columns}
+::: {.column width="50%"}
+**Vorteile**
+
+- 📊 R-Statistiken im Browser
+- 📋 Viele Report-Vorlagen
+- 🔬 Professionelle Analyse-Tools
+- 📈 Bewährte Visualisierungen
+- 🎨 Quarto-Ökosystem
+:::
+
+::: {.column width="50%"}
+**Nachteile**
+
+- 📦 Größeres Bundle (WebAssembly)
+- 🔧 Etwas weniger flexibel
+- 📚 Lernkurve für quarto-live
+- ⚙️ Komplexere Setup
+:::
+:::
+
+## Technische Details - Option 2 -->
+
+```{.r}
+# webR läuft vollständig im Browser
+library(webr)
+
+# Beispiel: Datenanalyse
+analyze_data <- function(data) {
+  summary_stats <- summary(data)
+  plot(data$variable1, data$variable2)
+  
+  return(list(
+    statistics = summary_stats,
+    correlations = cor(data)
+  ))
+}
+```
+
+::: {.callout-tip}
+## WebAssembly
+R-Code wird zu WASM kompiliert und läuft **client-side** im Browser!
+:::
+
+<!-- ## Quarto-Live Beispiel
+
+Mit quarto-live können interaktive Analysen direkt in die Webapp integriert werden:
+
+- Benutzer können Parameter anpassen
+- Ergebnisse werden live aktualisiert
+- Alles bleibt im Browser
+- Reproduzierbare Berichte -->
+
+# Datenschutz-Aspekte {background-color="#CFFF63"}
+
+## Client-Side Verarbeitung
+
+::: {.callout-important icon=false}
+## 🔒 Kernprinzip: Daten verlassen niemals das Gerät
+
+**Beide Optionen** gewährleisten:
+
+- [x] Keine Server-Uploads
+- [x] Keine Cloud-Verarbeitung
+- [x] Keine Datenübertragung
+- [x] Keine Logs externer Dienste
+:::
+
+## DSGVO-Compliance
+
+| Anforderung | Umsetzung |
+|-------------|-----------|
+| **Datensparsamkeit** | Nur lokale Verarbeitung |
+| **Zweckbindung** | Klare Analyse-Funktionen |
+| **Transparenz** | Open-Source Code |
+| **Integrität** | Keine externen Requests |
+| **Betroffenenrechte** | Volle Kontrolle liegt bei Sachbearbeitenden / Personalabteilung |
+
+## Sicherheitsaspekte
+
+::: {.panel-tabset}
+
+### Browser-Isolation
+::: {.nonincremental}
+- Sandbox-Umgebung des Browsers
+- Same-Origin-Policy
+- Keine persistente Speicherung
+:::
+
+### Code-Integrität
+::: {.nonincremental}
+- Vite.js für optimierte Builds
+- Subresource Integrity (SRI)
+- Content Security Policy (CSP)
+:::
+
+### Deployment
+::: {.nonincremental}
+- Statisches Hosting möglich
+- HTTPS obligatorisch
+- Keine Backend-Komponenten
+:::
+
+:::
+
+# Deployment {background-color="#B6A6F6"}
+
+## Build & Deployment Pipeline
+
+```bash
+# Mit Vite.js
+npm run build
+
+# Ergebnis: Statische Files
+dist/
+├── index.html
+├── assets/
+│   ├── index-[hash].js
+│   └── index-[hash].css
+└── ...
+```
+
+::: {.incremental}
+- Hosting auf Server des ZBFS
+- Kein Backend erforderlich
+<!-- - CDN-freundlich -->
+<!-- - Showcase auf ADA-Website möglich -->
+:::
+
+## Hosting-Optionen
+
+::: {.columns}
+::: {.column width="50%"}
+**Intern**
+
+- Hosting auf Server des ZBFS
+- Hosting über IT-DLZ
+:::
+
+::: {.column width="50%"}
+**Extern**
+
+- Hosting über ADA
+- Evtl. byte als Hosting-Partner
+:::
+:::
+
+<!-- # Empfehlung
+
+## Abwägung
+
+::: {.columns}
+::: {.column width="50%"}
+**Option 1 wenn:**
+
+- Maximale Performance wichtig
+- UI-Anforderungen sehr spezifisch
+- Kein R-Bedarf
+- Team mit JS-Expertise
+:::
+
+::: {.column width="50%"}
+**Option 2 wenn:**
+
+- Statistische Analysen zentral
+- Schnelle Report-Erstellung
+- R-Kenntnisse vorhanden
+- Wissenschaftlicher Kontext
+:::
+::: -->
+
+
+# Nächste Schritte {background-color="#ECFEB9"}
+
+## Schwellwertanalyse
+
+1. Beschreibung des Verarbeitungsvorgangs
+   - Client-seitige Analyse sensitiver Dateien
+   - Keine Datenübertragung, keine Speicherung
+   - Technologie: HTML/JS und/oder WASM
+
+2. Prüfung der 9 DSFA-Kriterien (WP248^[[LSFA MUSS-Liste (LDA)](https://www.lda.bayern.de/media/dsfa_muss_liste_dsk_de.pdf)]):
+  - [x] Vertrauliche oder höchst persönliche Daten
+  - [ ] Daten zu schutzbedürftigen Betroffenen
+  - [ ] Datenverarbeitung in großem Umfang
+  - [ ] Systematische Überwachung
+  - [ ] Innovative Nutzung oder Anwendung neuer technologischer oder organisatorischer Lösungen
+  - [ ] Bewerten oder Einstufen (Scoring)
+  - [ ] Abgleichen oder Zusammenführen von Datensätzen
+  - [ ] Automatisierte Entscheidungsfindung mit Rechtswirkung oder ähnlich bedeutsamer Wirkung
+  - [ ] Betroffene werden an der Ausübung eines Rechts oder der Nutzung einer Dienstleistung bzw. Durchführung
+eines Vertrags gehindert
+
+3. Ergebnis:
+   **KEINE DSFA erforderlich**
+
+   Die Webapp verarbeitet Daten ausschließlich client-seitig.
+   Es findet keine Übertragung, Speicherung oder zentrale
+   Sammlung statt. Das Restrisiko ist gering.
+
+
+## Roadmap
+
+| Phase | Aktivität | Dauer |
+|-------|-----------|-------|
+| 1 | Machbarkeit & Technische Entscheidung |  |
+| 2 | Entwicklung | 5-7 Wochen |
+| 3 | Internes Testing & Deployment | 2-4 Wochen |
+| 4 | Rollout, Schulung & externes Testing | 2-4 Wochen |
+
+# Fragen {background-color="#4D57B9"}
+
+1. Welche Stack-Option bevorzugen Sie?
+2. Gibt es spezifische Compliance-Anforderungen?
+3. Hosting-Präferenzen?
+<!-- 4. Zeitplan für Pilotphase?
+5. Anforderungen an die Dokumentation? -->
