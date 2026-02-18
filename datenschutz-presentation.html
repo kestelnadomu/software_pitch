@@ -196,7 +196,7 @@
 
 <section id="title-slide" data-footer="false" data-logo="" class="quarto-title-block center">
   <h1 class="title">Webapp für automatisierte Datenanalysen</h1>
-  <p class="subtitle">Technische Stack-Optionen mit Fokus auf Datenschutz</p>
+  <p class="subtitle">Technische Stack-Optionen mit Fokus auf Datenschutz und Deployment</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -217,15 +217,6 @@
 <li class="fragment"><a href="#/fragen" id="/toc-fragen">Fragen</a></li>
 </ul>
 </nav>
-</section>
-<section class="slide level2">
-
-<!--
-TODOS:
-- summarise
-- Datenschutz-Folgenabschätzung
-- Verzeichnis der Verarbeitungstätigkeiten 
--->
 </section>
 <section>
 <section id="stack-optionen" class="title-slide slide level1 center" data-background-color="#FF7550">
@@ -501,7 +492,6 @@ Mit quarto-live können interaktive Analysen direkt in die Webapp integriert wer
 <span id="cb3-10"><a href=""></a><span class="ex">└──</span> ...</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div>
 <ul>
-<li class="fragment">Hosting auf Server des ZBFS</li>
 <li class="fragment">Kein Backend erforderlich <!-- - CDN-freundlich --> <!-- - Showcase auf ADA-Website möglich --></li>
 </ul>
 </div>
@@ -560,7 +550,7 @@ Mit quarto-live können interaktive Analysen direkt in die Webapp integriert wer
 <li class="fragment">Keine Datenübertragung, keine Speicherung</li>
 <li class="fragment">Technologie: HTML/JS und/oder WASM</li>
 </ul></li>
-<li class="fragment">Prüfung der 9 DSFA-Kriterien (WP248<a href="#/footnotes" class="footnote-ref" id="fnref1" role="doc-noteref" data-footnote-href="#/fn1" onclick=""><sup>1</sup></a>):</li>
+<li class="fragment">Prüfung der DSFA-Kriterien (WP248<a href="#/footnotes" class="footnote-ref" id="fnref1" role="doc-noteref" data-footnote-href="#/fn1" onclick=""><sup>1</sup></a>):</li>
 </ol>
 <ul class="task-list">
 <li class="fragment"><label><input type="checkbox" checked="">Vertrauliche oder höchst persönliche Daten</label></li>
@@ -578,8 +568,8 @@ Mit quarto-live können interaktive Analysen direkt in die Webapp integriert wer
 <p>Die Webapp verarbeitet Daten ausschließlich client-seitig. Es findet keine Übertragung, Speicherung oder zentrale Sammlung statt. Das Restrisiko ist gering.</p></li>
 </ol>
 <aside></aside></section>
-<section id="roadmap" class="slide level2">
-<h2>Roadmap</h2>
+<section id="projektplan" class="slide level2">
+<h2>Projektplan</h2>
 <table class="caption-top">
 <thead>
 <tr class="header">
@@ -590,35 +580,73 @@ Mit quarto-live können interaktive Analysen direkt in die Webapp integriert wer
 </thead>
 <tbody>
 <tr class="odd">
-<td>1</td>
+<td>0</td>
 <td>Machbarkeit &amp; Technische Entscheidung</td>
 <td></td>
 </tr>
 <tr class="even">
-<td>2</td>
+<td>1</td>
 <td>Entwicklung</td>
-<td>5-7 Wochen</td>
+<td>8 Wochen</td>
 </tr>
 <tr class="odd">
-<td>3</td>
+<td>2</td>
 <td>Internes Testing &amp; Deployment</td>
-<td>2-4 Wochen</td>
+<td>8 Wochen</td>
 </tr>
 <tr class="even">
-<td>4</td>
-<td>Rollout, Schulung &amp; externes Testing</td>
-<td>2-4 Wochen</td>
+<td>3</td>
+<td>Rollout, Schulung &amp; bayernweites Testing</td>
+<td></td>
 </tr>
 </tbody>
 </table>
+</section>
+<section id="phase-1-entwicklung" class="slide level2">
+<h2>Phase 1 “Entwicklung”</h2>
+<ul>
+<li class="fragment">Entwicklung der App<br>
+</li>
+<li class="fragment">Erstellung einer Dokumentation<br>
+</li>
+<li class="fragment">Vorbereitung Testphase 1<br>
+</li>
+<li class="fragment"><strong>Meilenstein</strong> “Analysetool ist testbereit”</li>
+<li class="fragment"><strong>Dauer</strong>: ca. 2 Monate ab Beauftragung</li>
+</ul>
+</section>
+<section id="phase-2-erste-testphase" class="slide level2">
+<h2>Phase 2 “Erste Testphase”</h2>
+<ul>
+<li class="fragment">Testing mit ausgewählten Testusern (Kommunen und Staatsverwaltung)<br>
+</li>
+<li class="fragment">User-Support durch ADA<br>
+</li>
+<li class="fragment">Bug-Fixing<br>
+</li>
+<li class="fragment">Entwicklung Trainingsmaterialien + Anpassung der Dokumentation</li>
+<li class="fragment">Vorbereitung Rollout / Deployment bayernweit<br>
+</li>
+<li class="fragment"><strong>Meilenstein</strong>: “Analysetool ist bereit zum Rollout / Deployment”; (Zieldatum 30.6.)<br>
+</li>
+<li class="fragment"><strong>Dauer</strong>: ca. 2 Monate ab Ende Phase 1</li>
+</ul>
+</section>
+<section id="phase-3-testphase-bayernweit" class="slide level2">
+<h2>Phase 3 “Testphase bayernweit”</h2>
+<ul>
+<li class="fragment">Ziel: Kein User-Support durch ADA</li>
+</ul>
 </section></section>
 <section id="fragen" class="title-slide slide level1 center scrollable" data-background-color="#4D57B9">
 <h1>Fragen</h1>
 <ol type="1">
-<li class="fragment">Welche Stack-Option bevorzugen Sie?</li>
-<li class="fragment">Gibt es spezifische Compliance-Anforderungen?</li>
-<li class="fragment">Hosting-Präferenzen? <!-- 4. Zeitplan für Pilotphase?
-5. Anforderungen an die Dokumentation? --></li>
+<li class="fragment">Wie sollen wir das ZBFS in die Entwicklung einbinden?<br>
+</li>
+<li class="fragment">Kann das ZBFS die Web-App betreiben und der Staats- / Kommunalverwaltung zugänglich machen?<br>
+</li>
+<li class="fragment">Kann das ZBFS den User-Support für die Web-App machen? <!-- 4. Zeitplan für Pilotphase?
+1. Anforderungen an die Dokumentation? --></li>
 </ol>
 
 </section>

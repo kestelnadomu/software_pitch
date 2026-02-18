@@ -1,6 +1,6 @@
 ---
 title: "Webapp für automatisierte Datenanalysen"
-subtitle: "Technische Stack-Optionen mit Fokus auf Datenschutz"
+subtitle: "Technische Stack-Optionen mit Fokus auf Datenschutz und Deployment"
 author:
   name: |
     ![](img/ADA_G_PrimaryLogo_FullColor_Positive.svg){height=4em}
@@ -223,7 +223,6 @@ dist/
 ```
 
 ::: {.incremental}
-- Hosting auf Server des ZBFS
 - Kein Backend erforderlich
 <!-- - CDN-freundlich -->
 <!-- - Showcase auf ADA-Website möglich -->
@@ -281,7 +280,7 @@ dist/
    - Keine Datenübertragung, keine Speicherung
    - Technologie: HTML/JS und/oder WASM
 
-2. Prüfung der 9 DSFA-Kriterien (WP248^[[LSFA MUSS-Liste (LDA)](https://www.lda.bayern.de/media/dsfa_muss_liste_dsk_de.pdf)]):
+2. Prüfung der DSFA-Kriterien (WP248^[[LSFA MUSS-Liste (LDA)](https://www.lda.bayern.de/media/dsfa_muss_liste_dsk_de.pdf)]):
   - [x] Vertrauliche oder höchst persönliche Daten
   - [ ] Daten zu schutzbedürftigen Betroffenen
   - [ ] Datenverarbeitung in großem Umfang
@@ -301,19 +300,39 @@ eines Vertrags gehindert
    Sammlung statt. Das Restrisiko ist gering.
 
 
-## Roadmap
+## Projektplan
 
 | Phase | Aktivität | Dauer |
 |-------|-----------|-------|
-| 1 | Machbarkeit & Technische Entscheidung |  |
-| 2 | Entwicklung | 5-7 Wochen |
-| 3 | Internes Testing & Deployment | 2-4 Wochen |
-| 4 | Rollout, Schulung & externes Testing | 2-4 Wochen |
+| 0 | Machbarkeit & Technische Entscheidung |  |
+| 1 | Entwicklung | 8 Wochen |
+| 2 | Internes Testing & Deployment | 8 Wochen |
+| 3 | Rollout, Schulung & bayernweites Testing | |
+
+## Phase 1 “Entwicklung”
+   * Entwicklung der App  
+   * Erstellung einer Dokumentation  
+   * Vorbereitung Testphase 1  
+   * **Meilenstein** “Analysetool ist testbereit”
+   * **Dauer**: ca. 2 Monate ab Beauftragung
+
+## Phase 2 “Erste Testphase”
+  * Testing mit ausgewählten Testusern (Kommunen und Staatsverwaltung)  
+  * User-Support durch ADA  
+  * Bug-Fixing  
+  * Entwicklung Trainingsmaterialien \+ Anpassung der Dokumentation
+  * Vorbereitung Rollout / Deployment bayernweit  
+  * **Meilenstein**: “Analysetool ist bereit zum Rollout / Deployment”; (Zieldatum 30.6.)  
+  * **Dauer**: ca. 2 Monate ab Ende Phase 1
+
+## Phase 3 “Testphase bayernweit”  
+  * Ziel: Kein User-Support durch ADA
 
 # Fragen {background-color="#4D57B9"}
 
-1. Welche Stack-Option bevorzugen Sie?
-2. Gibt es spezifische Compliance-Anforderungen?
-3. Hosting-Präferenzen?
+1. Wie sollen wir das ZBFS in die Entwicklung einbinden?  
+2. Kann das ZBFS die Web-App betreiben und der Staats- / Kommunalverwaltung zugänglich machen?  
+3. Kann das ZBFS den User-Support für die Web-App machen?
 <!-- 4. Zeitplan für Pilotphase?
-5. Anforderungen an die Dokumentation? -->
+1. Anforderungen an die Dokumentation? -->
+
